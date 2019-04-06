@@ -5,11 +5,11 @@
 #include <SoftwareSerial.h>                                                 // To allow serial communication on other digital pins of the Arduino
 #include <avr/pgmspace.h>                                                   // To access data stored in program space (flash memory) of the device.
 
-#define FIREBASE_HOST "x8ledmatrixapp.firebaseio.com"                       // Link of API
-#define FIREBASE_AUTH "WDhtXxStr9h2bkXGLt755HTb7veYh6xpc2qBdKYV"            // Link of Database Secrets
+#define FIREBASE_HOST "XXXXXXXXXX.firebaseio.com"                           // Link of API
+#define FIREBASE_AUTH "XXXXXXXXXXXXXXXXXXXXXXXXX"                           // Link of Database Secrets
 
-#define WIFI_SSID "MSK"                                                     // WiFi's Username
-#define WIFI_PASSWORD "Krishna0406"                                         // WiFi's Password
+#define WIFI_SSID "user"                                                     // WiFi's Username
+#define WIFI_PASSWORD "pass"                                         // WiFi's Password
 
 #define WIFI_LED D5                                                         // Connect a LED to any of the GPIO pins of the board and replace pin number with it eg. D4                      
 
@@ -156,7 +156,7 @@ void setup() {
   Serial.println("IP address: ");
   Serial.println(WiFi.localIP());
 
-  //connect to Database
+  //Connect to Database
   Firebase.begin(FIREBASE_HOST, FIREBASE_AUTH);      
   delay(1000);
   
@@ -165,7 +165,6 @@ void setup() {
 void loop() {
   // Getting the values entered in the Android App as String 
   String data = Firebase.getString("Scrolling_Text"); 
-  yield();
   Serial.println(data); 
   // Converting the String to a Character Array
   data.toCharArray(text, len);
